@@ -13,11 +13,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './components/view/home/home.component';
-import { AppRoutingModule } from './app-routing.module';
-import { CategoriaReadComponent } from './components/view/categoria/categoria-read/categoria-read.component';
-import {MatTableModule} from '@angular/material/table';
-import {HttpClientModule} from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -26,7 +21,6 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
     NavComponent,
     HomeComponent,
-    CategoriaReadComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,10 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatCardModule,
-    AppRoutingModule,
-    MatTableModule,
-    HttpClientModule
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
