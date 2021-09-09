@@ -10,11 +10,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoriaService {
 
+  // tslint:disable-next-line: ban-types
   baseUrl: String = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
-  findAll():Observable<Categoria[]>{
+  findAll(): Observable<Categoria[]>{
     const url = `${this.baseUrl}/categorias`;
     return this.http.get<Categoria[]>(url);
   }

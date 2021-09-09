@@ -14,7 +14,29 @@
 	font-weight: 500;
 }
 
+button{
+	margin-bottom: .8rem;
+}
+
 .table{
 	width: 100%;
 	
+}
+
+.edit{
+	color: rgb(206, 173, 24);
+}
+
+.delete{
+	color: rgb(228, 56, 56);
+	margin-left: .5rem;
+}
+
+.mat-header{
+	width: 5rem;
+}
+
+.livros{
+	margin-left: .6rem;
+	color: rgb(37, 125, 240);
 }
