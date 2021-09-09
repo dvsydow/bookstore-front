@@ -28,6 +28,7 @@ export class CategoriaReadComponent implements OnInit {
 
   }
 
+  // tslint:disable-next-line: typedef
   navegarParaCategoriaCreate(){
     this.router.navigate(['categorias/create']);
   }

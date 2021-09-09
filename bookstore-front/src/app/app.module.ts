@@ -21,6 +21,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { CategoriaCreateComponent } from './components/view/categoria/categoria-create/categoria-create.component';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {MatInputModule} from '@angular/material/input';
     HttpClientModule,
     MatButtonModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
