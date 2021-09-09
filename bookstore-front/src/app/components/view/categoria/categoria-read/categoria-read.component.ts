@@ -32,4 +32,5 @@ export class CategoriaReadComponent implements OnInit {
   navegarParaCategoriaCreate(){
     this.router.navigate(['categorias/create']);
   }
+
 }
