@@ -34,7 +34,8 @@ export class CategoriaUpdateComponent implements OnInit {
       this.service.mensagem('Categoria alterada com sucesso!');
     },
       err => {
-        this.service.mensagem('validar se todos os campos estao preenchidos corretamente!');
+        // this.service.mensagem('validar se todos os campos estao preenchidos corretamente!');
+        this.service.mensagem(err.error.error);
       }
 
     );

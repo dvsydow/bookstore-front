@@ -5,6 +5,7 @@ import { CategoriaReadComponent } from './components/view/categoria/categoria-re
 import { CategoriaCreateComponent } from './components/view/categoria/categoria-create/categoria-create.component';
 import { CategoriaDeleteComponent } from './components/view/categoria/categoria-delete/categoria-delete.component';
 import { CategoriaUpdateComponent } from './components/view/categoria/categoria-update/categoria-update.component';
+import { LivroReadAllComponent } from './components/view/livro/livro-read-all/livro-read-all.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'categorias/create', component: CategoriaCreateComponent },
   { path: 'categorias/delete/:id', component: CategoriaDeleteComponent },
   { path: 'categorias/update/:id', component: CategoriaUpdateComponent },
+  { path: 'categorias/:id_cat/livros', component: LivroReadAllComponent },
 ];
 
 @NgModule({
