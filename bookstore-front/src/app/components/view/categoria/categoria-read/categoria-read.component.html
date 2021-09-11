@@ -13,19 +13,19 @@
 
 			<!-- Position Column -->
 			<ng-container matColumnDef="id">
-				<th mat-header-cell *matHeaderCellDef> Id </th>
+				<th mat-header-cell *matHeaderCellDef> ID </th>
 				<td mat-cell *matCellDef="let row"> {{row.id}} </td>
 			</ng-container>
 
 			<!-- Name Column -->
 			<ng-container matColumnDef="nome">
-				<th mat-header-cell *matHeaderCellDef> Nome </th>
+				<th mat-header-cell *matHeaderCellDef> NOME </th>
 				<td mat-cell *matCellDef="let row"> {{row.nome}} </td>
 			</ng-container>
 
 			<!-- Weight Column -->
 			<ng-container matColumnDef="descricao">
-				<th mat-header-cell *matHeaderCellDef> DESCRIÇÃO </th>
+				<th mat-header-cell *matHeaderCellDef> DESCRIÃ‡ÃƒO </th>
 				<td mat-cell *matCellDef="let row"> {{row.descricao}} </td>
 			</ng-container>
 
@@ -41,7 +41,7 @@
 
 			<!-- Symbol Column -->
 			<ng-container matColumnDef="acoes">
-				<th class="mat-header" mat-header-cell *matHeaderCellDef> Ações </th>
+				<th class="mat-header" mat-header-cell *matHeaderCellDef> AÃ‡Ã•ES </th>
 				<td mat-cell *matCellDef="let row">
 					<a class="edit" routerLink="update/{{row.id}}">
 						<i class="material-icons">edit</i>

@@ -8,9 +8,9 @@
       "name": "Launch Chrome bookstore-front on Angular CLI Server",
       "type": "chrome",
       "request": "launch",
-      "port": 9291,
+      "port": 9219,
       "webRoot": "${workspaceFolder}",
-      "url": "http://localhost:4200/#"
+      "url": "http://localhost:4201/#"
     },
     {
       "name": "Launch Chrome localhost (1)",
