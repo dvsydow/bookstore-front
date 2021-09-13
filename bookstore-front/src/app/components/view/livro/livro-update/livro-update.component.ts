@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { LivroService } from '../livro.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Livro } from '../livro.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-livro-update',
