@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LivroService } from '../livro.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Livro } from '../livro.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-livro-delete',
@@ -9,6 +10,10 @@ import { Livro } from '../livro.model';
   styleUrls: ['./livro-delete.component.css']
 })
 export class LivroDeleteComponent implements OnInit {
+
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+
+  public loading$ = this.loadingSubject.asObservable();
 
   id_cat: String = '';
 
@@ -28,17 +33,21 @@ export class LivroDeleteComponent implements OnInit {
   }
 
   findByID(): void{
+    this.loadingSubject.next(true);
     this.service.findById(this.livro.id).subscribe((resposta) => {
+      this.loadingSubject.next(false);
       this.livro = resposta;
     });
 
   }
 
   delete(): void {
+    this.loadingSubject.next(true);
     this.service.delete(this.livro.id).subscribe((resposta) => {
       this.router.navigate([`categorias/${this.id_cat}/livros`]);
       this.service.mensagem('Livro Excluido com sucesso!');
     }, err => {
+      this.loadingSubject.next(false);
       this.router.navigate([`categorias/${this.id_cat}/livros`]);
       this.service.mensagem('Falha ao excluir Livro! Tente mais tarde!');
     });

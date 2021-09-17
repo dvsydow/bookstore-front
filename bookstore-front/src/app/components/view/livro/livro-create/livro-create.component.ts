@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { LivroService } from '../livro.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Livro } from '../livro.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-livro-create',
@@ -11,7 +12,9 @@ import { Livro } from '../livro.model';
 })
 export class LivroCreateComponent implements OnInit {
 
-  isLoading = false;
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+
+  public loading$ = this.loadingSubject.asObservable();
 
   id_cat: String = '';
   livro: Livro = {
@@ -32,11 +35,13 @@ export class LivroCreateComponent implements OnInit {
   }
 
   create(): void {
+    this.loadingSubject.next(true);
     // this.id_cat = this.route.snapshot.paramMap.get('id_cat');
     this.service.create(this.livro, this.id_cat).subscribe((resposta) => {
       this.router.navigate([`categorias/${this.id_cat}/livros`]);
       this.service.mensagem('Livro Criado com sucesso!');
     }, err => {
+      this.loadingSubject.next(false);
       this.router.navigate([`categorias/${this.id_cat}/livros`]);
       console.log(err);
       this.service.mensagem('Erro ao criar novo Livro! Tente mais tarde!');
@@ -61,10 +66,6 @@ export class LivroCreateComponent implements OnInit {
     }
     return false;
 
-  }
-
-  thinking(): void {
-    this.isLoading=true;
   }
 
 }
