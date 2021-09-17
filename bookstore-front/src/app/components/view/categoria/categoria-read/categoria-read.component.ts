@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../categoria.service';
 import { Categoria } from '../categoria.model';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-categoria-read',
@@ -10,6 +11,10 @@ import { Router } from '@angular/router';
 })
 export class CategoriaReadComponent implements OnInit {
   categorias: Categoria[] = [];
+
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+
+  public loading$ = this.loadingSubject.asObservable();
 
   constructor(private service: CategoriaService, private router: Router) { }
 
@@ -21,7 +26,9 @@ export class CategoriaReadComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   findAll(){
+    this.loadingSubject.next(true);
     this.service.findAll().subscribe(resposta => {
+      this.loadingSubject.next(false);
       console.log(resposta);
       this.categorias = resposta;
     });

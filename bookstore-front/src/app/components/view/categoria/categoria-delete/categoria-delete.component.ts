@@ -10,6 +10,8 @@ import { Categoria } from '../categoria.model';
 })
 export class CategoriaDeleteComponent implements OnInit {
 
+  isLoading = true;
+
   categoria: Categoria = {
     id: '',
     nome: '',
@@ -24,24 +26,31 @@ export class CategoriaDeleteComponent implements OnInit {
 
   findById(): void {
     this.service.findById(this.categoria.id).subscribe((resposta) => {
-       this.categoria = resposta;
-       console.log(resposta);
+      this.isLoading = false;
+      this.categoria = resposta;
+      console.log(resposta);
     });
   }
 
   delete(): void {
     this.service.delete(this.categoria.id).subscribe((resposta) => {
+      this.isLoading = false;
       this.router.navigate(['categorias']);
       this.service.mensagem('categoria apagada com sucesso!');
     },
       err => {
-          this.service.mensagem(err.error.error);
+        this.isLoading = false;
+        this.service.mensagem(err.error.error);
       }
     );
   }
 
   cancelar(): void {
       this.router.navigate(['categorias']);
+  }
+
+  thinking(): void {
+    this.isLoading=true;
   }
 
 }

@@ -11,6 +11,8 @@ import { Livro } from '../livro.model';
 })
 export class LivroCreateComponent implements OnInit {
 
+  isLoading = false;
+
   id_cat: String = '';
   livro: Livro = {
     id: '',
@@ -59,6 +61,10 @@ export class LivroCreateComponent implements OnInit {
     }
     return false;
 
+  }
+
+  thinking(): void {
+    this.isLoading=true;
   }
 
 }

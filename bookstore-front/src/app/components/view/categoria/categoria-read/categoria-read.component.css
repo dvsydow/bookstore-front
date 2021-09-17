@@ -40,3 +40,7 @@ button{
 	margin-left: .6rem;
 	color: rgb(37, 125, 240);
 }
+
+.spinner-container mat-spinner {
+    margin: 3rem auto 0 auto;
+}

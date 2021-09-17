@@ -40,3 +40,13 @@ button{
 	margin-left: .6rem;
 	color: rgb(37, 125, 240);
 }
+
+.mat-spinner{
+	text-align: center;
+	margin-top: 5rem;
+ 	display: flex; 
+ 	justify-content: center;  
+	align-items: center;
+	margin: 2rem auto 0 auto;
+
+}

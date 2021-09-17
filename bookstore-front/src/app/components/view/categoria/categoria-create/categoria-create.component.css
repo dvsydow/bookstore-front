@@ -24,3 +24,7 @@ button{
     padding-right: 2rem;
     padding-left: 2rem;
 }
+
+.spinner-container mat-spinner {
+    margin: 3rem auto 0 auto;
+}

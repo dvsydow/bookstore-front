@@ -10,6 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CategoriaUpdateComponent implements OnInit {
 
+  isLoading = true;
+
   categoria: Categoria = {
     nome: '',
     descricao: ''
@@ -23,9 +25,14 @@ export class CategoriaUpdateComponent implements OnInit {
 
   findById(): void {
     this.service.findById(this.categoria.id).subscribe((resposta) => {
-       this.categoria = resposta;
-       console.log(resposta);
+      this.isLoading = false;
+      this.categoria = resposta;
+      console.log(resposta);
     });
+  }
+
+  thinking(): void {
+    this.isLoading=true;
   }
 
   update(): void {
@@ -42,6 +49,6 @@ export class CategoriaUpdateComponent implements OnInit {
   }
 
   cancelar(): void {
-      this.router.navigate(['categorias']);
+    this.router.navigate(['categorias']);
   }
 }

@@ -29,6 +29,8 @@ import { LivroCreateComponent } from './components/view/livro/livro-create/livro
 import { LivroUpdateComponent } from './components/view/livro/livro-update/livro-update.component';
 import { LivroDeleteComponent } from './components/view/livro/livro-delete/livro-delete.component';
 import { LivroReadComponent } from './components/view/livro/livro-read/livro-read.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { LivroReadComponent } from './components/view/livro/livro-read/livro-rea
     FormsModule,
     MatInputModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

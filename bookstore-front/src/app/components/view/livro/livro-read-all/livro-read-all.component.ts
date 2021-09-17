@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LivroReadAllComponent implements OnInit {
 
+  isLoading = true;
   displayedColumns: string[] = ['id', 'titulo', 'livros', 'acoes'];
 
   livros: Livro[] = [];
@@ -27,6 +28,7 @@ export class LivroReadAllComponent implements OnInit {
   // tslint:disable-next-line: typedef
   findAll(){
     this.service.findAllByCategoria(this.id_cat).subscribe((resposta) => {
+      this.isLoading = false;
       this.livros = resposta;
       console.log(this.livros);
     });
