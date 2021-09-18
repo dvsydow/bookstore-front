@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Categoria } from './categoria.model';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -17,35 +18,68 @@ export class CategoriaService {
   // tslint:disable-next-line: variable-name
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
-  findAll(): Observable<Categoria[]>{
+  findAll(): Observable<Categoria[]> {
     const url = `${this.baseUrl}/categorias`;
     return this.http.get<Categoria[]>(url);
+
+  }
+
+  findAll1(filter = '', sortOrder = 'asc',
+    pageNumber = 0, pageSize = 3): Observable<Categoria[]> {
+
+    const url = `${this.baseUrl}/categorias`;
+    return this.http.get<Categoria[]>(url, {
+      params: new HttpParams()
+
+        .set('filter', filter)
+        .set('sortOrder', sortOrder)
+        .set('pageNumber', pageNumber.toString())
+        .set('pageSize', pageSize.toString())
+    });
+
+  }
+
+  findLessons(
+    courseId: number, filter = '', sortOrder = 'asc',
+    pageNumber = 0, pageSize = 3): Observable<Categoria[]> {
+
+    const url = `${this.baseUrl}/categorias`;
+    return this.http.get(url, {
+      params: new HttpParams()
+
+        .set('filter', filter)
+        .set('sortOrder', sortOrder)
+        .set('pageNumber', pageNumber.toString())
+        .set('pageSize', pageSize.toString())
+    }).pipe(
+      map(res => res["payload"])
+    );
   }
 
   // tslint:disable-next-line: ban-types
-  findById(id: String): Observable<Categoria>{
+  findById(id: String): Observable<Categoria> {
     const url = `${this.baseUrl}/categorias/${id}`;
     return this.http.get<Categoria>(url);
   }
 
   // tslint:disable-next-line: ban-types
-  delete(id: String): Observable<void>{
+  delete(id: String): Observable<void> {
     const url = `${this.baseUrl}/categorias/${id}`;
     return this.http.delete<void>(url);
   }
 
-  create(categoria: Categoria): Observable<Categoria>{
+  create(categoria: Categoria): Observable<Categoria> {
     const url = `${this.baseUrl}/categorias`;
     return this.http.post<Categoria>(url, categoria);
   }
 
-  update(categoria: Categoria): Observable<void>{
+  update(categoria: Categoria): Observable<void> {
     const url = `${this.baseUrl}/categorias/${categoria.id}`;
     return this.http.put<void>(url, categoria);
   }
 
   // tslint:disable-next-line: ban-types
-  mensagem(str: String): void{
+  mensagem(str: String): void {
     this._snack.open(`${str}`, 'OK', {
       horizontalPosition: 'end',
       verticalPosition: 'top',

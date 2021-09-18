@@ -7,7 +7,7 @@
 		Categoria</button>
 
 	<div class="mat-elevation-z8 content-table">
-		<table class="table" mat-table [dataSource]="categorias">
+		<table class="table" mat-table [dataSource]="categorias" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
 
 			<!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -58,11 +58,8 @@
 
 			
 		</table>
-		<mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-			</mat-paginator>
+		<mat-paginator [length]="7" [pageSize]="3"
+                   [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
 	</div>
 	
 	<div class="spinner-container" *ngIf="loading$ | async">
